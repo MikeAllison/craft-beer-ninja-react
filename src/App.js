@@ -1,5 +1,6 @@
 import './App.css';
 import SearchForm from './components/SearchForm/SearchForm';
+import SearchResultsSection from './components/SearchResultsSection/SearchResultsSection';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <h2>Craft Beer Ninja</h2>
       </header>
       <SearchForm />
+      <SearchResultsSection />
     </div>
   );
 }
