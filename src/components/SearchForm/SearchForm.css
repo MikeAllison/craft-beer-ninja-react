@@ -1,0 +1,51 @@
+* {
+  color: #666;
+}
+h3 {
+  color: #adaf11;
+}
+form {
+  text-align: center;
+}
+input {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #333;
+  background-color: #333;
+  color: #bbb;
+  padding: 0.938rem 0.25rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+input:focus {
+  border: 1px solid #adaf11 !important;
+}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: 0;
+  background-color: #adaf11;
+  border-radius: 0.25rem;
+  color: #000;
+  white-space: nowrap;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+button > img {
+  width: 1rem;
+  margin-right: 0.4rem;
+}
+button.geo-locate-btn {
+  border-color: #2a2a2a;
+  background-color: #333;
+  color: #bbb;
+}
+button.disabled {
+  opacity: 0.7;
+}
