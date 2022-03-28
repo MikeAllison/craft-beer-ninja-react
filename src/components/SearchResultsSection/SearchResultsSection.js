@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import ResultsList from './ResultsList';
 import RecentSearchesList from './RecentSearchesList';
 
@@ -28,14 +30,32 @@ const SearchResultsSection = () => {
     }
   ];
 
+  const [selectedTab, setSelectedTab] = useState('Results');
+
+  const selectedTabChangeHandler = selectedTab => {
+    setSelectedTab(selectedTab);
+  };
+
   return (
     <div>
       <ul className={styles['search-results-menu']}>
-        <li className={styles.selected}>Results</li>
-        <li>Recent Searches</li>
+        <li
+          className={selectedTab === 'Results' ? styles.selected : null}
+          onClick={selectedTabChangeHandler.bind(this, 'Results')}
+        >
+          Results
+        </li>
+        <li
+          className={selectedTab === 'RecentSearches' ? styles.selected : null}
+          onClick={selectedTabChangeHandler.bind(this, 'RecentSearches')}
+        >
+          Recent Searches
+        </li>
       </ul>
-      <ResultsList results={results} />
-      <RecentSearchesList recentSearches={recentSearches} />
+      {selectedTab === 'Results' && <ResultsList results={results} />}
+      {selectedTab === 'RecentSearches' && (
+        <RecentSearchesList recentSearches={recentSearches} />
+      )}
     </div>
   );
 };
