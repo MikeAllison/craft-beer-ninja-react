@@ -1,0 +1,31 @@
+.li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #333;
+  border-bottom: none;
+  padding: 0.94rem;
+  color: #bbb;
+}
+.li:first-child {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.li:last-child {
+  border-bottom: 1px solid #333;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+.li:hover {
+  background-color: #121212;
+  cursor: pointer;
+}
+.places-count {
+  min-width: 30px;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  color: #000;
+  background-color: #adaf11;
+  text-align: center;
+  font-size: 0.75rem;
+}
