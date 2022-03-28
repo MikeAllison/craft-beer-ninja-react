@@ -1,6 +1,6 @@
 import ResultsList from './ResultsList';
 
-import './SearchResultsSection.css';
+import styles from './SearchResultsSection.module.css';
 
 const SearchResultsSection = () => {
   const places = [
@@ -16,8 +16,8 @@ const SearchResultsSection = () => {
 
   return (
     <div>
-      <ul className="search-results-menu">
-        <li className="search-results-menu__selected">Results</li>
+      <ul className={styles['search-results-menu']}>
+        <li className={styles.selected}>Results</li>
         <li>Recent Searches</li>
       </ul>
       <ResultsList results={places} />

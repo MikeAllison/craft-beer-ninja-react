@@ -1,0 +1,22 @@
+.img {
+  margin-top: 4rem;
+  opacity: 0.2;
+}
+.ul {
+  margin: 0.75rem 0;
+  list-style-type: none;
+}
+.button {
+  width: 100%;
+  margin-bottom: 4rem;
+  padding: 1rem;
+  border: 0;
+  background-color: #adaf11;
+  border-radius: 0.25rem;
+  line-height: 1.2;
+  color: #000;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+}
