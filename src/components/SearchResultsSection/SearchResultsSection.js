@@ -8,14 +8,17 @@ import styles from './SearchResultsSection.module.css';
 const SearchResultsSection = () => {
   const results = [
     {
-      id: 1,
-      name: 'Sweet Ave'
+      placeID: 1,
+      name: 'Sweet Ave',
+      distance: '0.3 mi'
     },
     {
-      id: 2,
+      placeID: 2,
       name: 'Solid State'
     }
   ];
+
+  const nextPageToken = 'asdf1234';
 
   const recentSearches = [
     {
@@ -52,7 +55,9 @@ const SearchResultsSection = () => {
           Recent Searches
         </li>
       </ul>
-      {selectedTab === 'Results' && <ResultsList results={results} />}
+      {selectedTab === 'Results' && (
+        <ResultsList results={results} nextPageToken={nextPageToken} />
+      )}
       {selectedTab === 'RecentSearches' && (
         <RecentSearchesList recentSearches={recentSearches} />
       )}

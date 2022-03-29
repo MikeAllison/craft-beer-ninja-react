@@ -14,8 +14,9 @@ const RecentSearchesList = props => {
         {props.recentSearches.map(recentSearch => {
           return (
             <RecentSearchItem
-              recentSearch={recentSearch}
               key={recentSearch.id}
+              location={recentSearch.location}
+              placesCount={recentSearch.placesCount}
             />
           );
         })}

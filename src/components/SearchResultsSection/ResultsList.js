@@ -2,6 +2,12 @@ import ResultItem from './ResultItem';
 import styles from './ResultsList.module.css';
 
 const ResultsList = props => {
+  const loadMorePlacesHandler = () => {
+    console.log(
+      'loadMorePlacesHandler - Next Page Token:' + props.nextPageToken
+    );
+  };
+
   if (props.results.length === 0) {
     return (
       <img
@@ -16,10 +22,21 @@ const ResultsList = props => {
     <div>
       <ul className={styles.ul}>
         {props.results.map(result => {
-          return <ResultItem result={result} key={result.id} />;
+          return (
+            <ResultItem
+              key={result.placeID}
+              placeID={result.placeID}
+              name={result.name}
+              distance={result.distance}
+            />
+          );
         })}
       </ul>
-      <button className={styles.button}>Load More Places</button>
+      {props.nextPageToken && (
+        <button className={styles.button} onClick={loadMorePlacesHandler}>
+          Load More Places
+        </button>
+      )}
     </div>
   );
 };
