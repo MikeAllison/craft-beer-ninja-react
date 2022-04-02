@@ -5,9 +5,11 @@ import styles from './SearchForm.module.css';
 const SearchForm = () => {
   const defaultSearchLocation = 'New York, NY';
   const [searchLocation, setSearchLocation] = useState(defaultSearchLocation);
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const searchLocationChangeHander = event => {
     setSearchLocation(event.target.value);
+    setFormIsValid(event.target.value.trim().length > 0);
   };
 
   const textSearchHandler = e => {
@@ -37,7 +39,11 @@ const SearchForm = () => {
           className={styles.input}
           onChange={searchLocationChangeHander}
         />
-        <button className={styles.button} onClick={textSearchHandler}>
+        <button
+          className={styles.button}
+          onClick={textSearchHandler}
+          disabled={!formIsValid}
+        >
           <img src="./img/geolocation.svg" alt="Globe Icon" />
           Locate!
         </button>

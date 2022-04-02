@@ -43,6 +43,6 @@
   background-color: #333;
   color: #bbb;
 }
-.button.disabled {
-  opacity: 0.7;
+.button[disabled] {
+  opacity: 0.3;
 }
