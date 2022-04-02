@@ -24,7 +24,7 @@ const SearchForm = () => {
   };
 
   return (
-    <div>
+    <>
       <h3 className={styles.heading}>Enter a Location</h3>
       <form>
         <input
@@ -52,7 +52,7 @@ const SearchForm = () => {
           Use My Location
         </button>
       </form>
-    </div>
+    </>
   );
 };
 

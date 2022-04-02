@@ -40,7 +40,7 @@ const SearchResultsSection = () => {
   };
 
   return (
-    <div>
+    <>
       <ul className={styles['search-results-menu']}>
         <li
           className={selectedTab === 'Results' ? styles.selected : null}
@@ -61,7 +61,7 @@ const SearchResultsSection = () => {
       {selectedTab === 'RecentSearches' && (
         <RecentSearchesList recentSearches={recentSearches} />
       )}
-    </div>
+    </>
   );
 };
 

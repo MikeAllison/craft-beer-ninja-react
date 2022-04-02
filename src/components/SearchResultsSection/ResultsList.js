@@ -19,7 +19,7 @@ const ResultsList = props => {
   }
 
   return (
-    <div>
+    <>
       <ul className={styles.ul}>
         {props.results.map(result => {
           return (
@@ -37,7 +37,7 @@ const ResultsList = props => {
           Load More Places
         </button>
       )}
-    </div>
+    </>
   );
 };
 

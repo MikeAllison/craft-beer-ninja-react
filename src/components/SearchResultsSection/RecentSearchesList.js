@@ -9,7 +9,7 @@ const RecentSearchesList = props => {
   }
 
   return (
-    <div>
+    <>
       <ul className={styles.ul}>
         {props.recentSearches.map(recentSearch => {
           return (
@@ -21,7 +21,7 @@ const RecentSearchesList = props => {
           );
         })}
       </ul>
-    </div>
+    </>
   );
 };
 
