@@ -41,9 +41,9 @@ const SearchForm = () => {
   async function geolocationSearchHandler(e) {
     e.preventDefault();
     if (!navigator.geolocation) {
-      console.log('geolocation disabled in browser');
       // TO-DO:
       // Show alert
+      console.log('geolocation disabled in browser');
       return;
     }
 
@@ -65,7 +65,6 @@ const SearchForm = () => {
       );
 
       if (response.ok) {
-        console.log(response);
         const data = await response.json();
         console.log(data);
         setSearchLocation(data.searchLocation.formattedAddress);
