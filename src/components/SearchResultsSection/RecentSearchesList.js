@@ -1,8 +1,18 @@
+import { useState, useEffect } from 'react';
+
 import RecentSearchItem from './RecentSearchItem';
 import styles from './RecentSearchesList.module.css';
 
-const RecentSearchesList = props => {
-  if (props.recentSearches.length === 0) {
+const RecentSearchesList = () => {
+  const [recentSearches, setRecentSearches] = useState([]);
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('recentSearches'))) {
+      setRecentSearches(JSON.parse(localStorage.getItem('recentSearches')));
+    }
+  }, []);
+
+  if (recentSearches.length === 0) {
     return (
       <h3 className={styles.heading}>Search to Add a Location to This List</h3>
     );
@@ -11,11 +21,11 @@ const RecentSearchesList = props => {
   return (
     <>
       <ul className={styles.ul}>
-        {props.recentSearches.map(recentSearch => {
+        {recentSearches.map(recentSearch => {
           return (
             <RecentSearchItem
               key={recentSearch.id}
-              location={recentSearch.location}
+              location={recentSearch.savedSearchLocation}
               placesCount={recentSearch.placesCount}
             />
           );

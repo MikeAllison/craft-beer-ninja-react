@@ -43,9 +43,10 @@ h6 {
 .brand {
   display: flex;
   justify-content: center;
+  color: #fff;
 }
 .brand > * {
-  margin: 0.5rem 0.25rem;
+  margin: 0.25rem 0.25rem 0.5rem 0.25rem;
 }
 .brand > img {
   width: 30px;
