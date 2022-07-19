@@ -1,14 +1,17 @@
+import { useSelector } from 'react-redux';
+
 import ResultItem from './ResultItem';
 import styles from './ResultsList.module.css';
 
-const ResultsList = props => {
-  const loadMorePlacesHandler = () => {
-    console.log(
-      'loadMorePlacesHandler - Next Page Token:' + props.nextPageToken
-    );
+const ResultsList = () => {
+  const places = useSelector(state => state.results.places);
+  const nextPageToken = useSelector(state => state.results.nextPageToken);
+
+  const loadMoreResultsHandler = () => {
+    console.log('loadMoreResultssHandler - Next Page Token:' + nextPageToken);
   };
 
-  if (props.results.length === 0) {
+  if (places.length === 0) {
     return (
       <img
         src="./img/beer-hefe.svg"
@@ -21,20 +24,20 @@ const ResultsList = props => {
   return (
     <>
       <ul className={styles.ul}>
-        {props.results.map(result => {
+        {places.map(place => {
           return (
             <ResultItem
-              key={result.placeID}
-              placeID={result.placeID}
-              name={result.name}
-              distance={result.distance}
+              key={place.place_id}
+              placeID={place.place_id}
+              name={place.name}
+              distance={place.distance}
             />
           );
         })}
       </ul>
-      {props.nextPageToken && (
-        <button className={styles.button} onClick={loadMorePlacesHandler}>
-          Load More Places
+      {nextPageToken && (
+        <button className={styles.button} onClick={loadMoreResultsHandler}>
+          Load More Results
         </button>
       )}
     </>

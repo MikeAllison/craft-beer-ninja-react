@@ -2,95 +2,20 @@ import { useState, useRef } from 'react';
 
 import styles from './SearchForm.module.css';
 
-const SearchForm = () => {
+const SearchForm = props => {
   const searchLocationRef = useRef();
-  const [searchLocation, setSearchLocation] = useState('New York, NY');
   const [formIsValid, setFormIsValid] = useState(false);
 
-  async function textSearchHandler(e) {
+  const textSearchHandler = e => {
     e.preventDefault();
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URI}/form-search`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          searchLocation: searchLocationRef.current.value
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    );
+    setFormIsValid(false);
+    props.onTextSearch(searchLocationRef);
+  };
 
-    if (response.ok) {
-      console.log(response);
-      const data = await response.json();
-      console.log(data);
-      setSearchLocation(data.searchLocation.formattedAddress);
-      searchLocationRef.current.value = '';
-
-      // TO-DO:
-      // Get distances
-      // Show search modal
-      // Add location to recent searches
-      // Handle 0 results
-      // Handle errors
-    }
-  }
-
-  async function geolocationSearchHandler(e) {
+  const geolocationSearchHandler = e => {
     e.preventDefault();
-    if (!navigator.geolocation) {
-      // TO-DO:
-      // Show alert
-      console.log('geolocation disabled in browser');
-      return;
-    }
-
-    async function getCurPosSuccess(geoPosition) {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URI}/geo-search`,
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            coordinates: {
-              lat: geoPosition.coords.latitude,
-              lng: geoPosition.coords.longitude
-            }
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setSearchLocation(data.searchLocation.formattedAddress);
-        searchLocationRef.current.value = '';
-
-        // TO-DO:
-        // Get distances
-        // Show search modal
-        // Add location to recent searches
-        // Handle 0 results
-        // Handle errors
-      }
-
-      //
-    }
-
-    function getCurPosFail() {
-      // TO-DO: Show error modal
-      console.log('geo-fail');
-    }
-
-    await navigator.geolocation.getCurrentPosition(
-      getCurPosSuccess,
-      getCurPosFail
-    );
-  }
+    props.onGeolocationSearch();
+  };
 
   return (
     <>
@@ -101,7 +26,7 @@ const SearchForm = () => {
           id="search-location"
           name="search-location"
           type="text"
-          placeholder={searchLocation}
+          placeholder={props.searchLocation}
           className={styles.input}
           onChange={e => setFormIsValid(e.target.value.trim().length > 0)}
         />

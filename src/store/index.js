@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import placesReducer from './places';
-import recentSearchesReducer from './recent-searches';
+import resultsReducer from './results';
 
 const store = configureStore({
-  places: placesReducer,
-  recentSearches: recentSearchesReducer
+  reducer: { results: resultsReducer }
 });
 
 export default store;
